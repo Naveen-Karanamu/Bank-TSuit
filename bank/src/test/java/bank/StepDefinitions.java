@@ -1,6 +1,10 @@
 package bank;
 
 import io.cucumber.java.en.*;
+import java.io.*;
+
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StepDefinitions {
@@ -70,5 +74,47 @@ public class StepDefinitions {
         String errorMessage = ">> Error: Withdrawal not allowed due to insufficient funds. <<";
         System.out.println(errorMessage);
     }
+
+    @Given("I have the following account details from CSV file {string}")
+    public void iHaveTheFollowingAccountDetailsFromCSVFile(String csvFilePath) {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(csvFilePath));
+            String line;
+            boolean firstLineSkipped = false;
+
+            while ((line = br.readLine()) != null) {
+                if (!firstLineSkipped) {
+                    firstLineSkipped = true;
+                    continue; // Skip the first line (column headers)
+                }
+
+                String[] values = line.split(",");
+                int balance = Integer.parseInt(values[0].trim());
+                int deposit = Integer.parseInt(values[1].trim());
+                int expectedBalance = Integer.parseInt(values[2].trim());
+                int fee = Integer.parseInt(values[3].trim());
+                int expectedAvailableBalance = Integer.parseInt(values[4].trim());
+
+                myCheckingAccountHasABalanceOf$(balance);
+                iHaveRecentlyMadeADepositOf$(deposit);
+                iCheckMyAccountBalance();
+                iShouldSee$AsTheBalance(expectedBalance);
+                thereIsAnOverdraftFeeOf$(fee);
+                theAvailableBalanceShouldBe$(expectedAvailableBalance);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
 
 }
