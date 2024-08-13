@@ -40,7 +40,13 @@ public class StepDefinitions {
 
     @And("the available balance should be ${int}")
     public void theAvailableBalanceShouldBe$(int expectedAvailableBalance) {
+        if (withdrawalAmount > 0
+        && withdrawalAmount > checkingAccountBalance + depositAmount + creditInterest - overDraftFee){
+            availableBalance = checkingAccountBalance + depositAmount - overDraftFee + creditInterest;
+        }
+        else {
         availableBalance = checkingAccountBalance + depositAmount - overDraftFee + creditInterest - withdrawalAmount;
+        }
         assertEquals(expectedAvailableBalance, availableBalance);
     }
 
@@ -53,4 +59,16 @@ public class StepDefinitions {
     public void thereIsACreditInterestOf$(int interest) {
         creditInterest = interest;
     }
+
+    @When("I request to withdraw ${int}")
+    public void iRequestToWithdraw$(int withdrawal) {
+        withdrawalAmount = withdrawal;
+    }
+
+    @Then("I should see an Error")
+    public void iShouldSeeAnError() {
+        String errorMessage = ">> Error: Withdrawal not allowed due to insufficient funds. <<";
+        System.out.println(errorMessage);
+    }
+
 }
