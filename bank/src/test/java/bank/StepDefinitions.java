@@ -1,33 +1,56 @@
 package bank;
 
 import io.cucumber.java.en.*;
-
-import org.junit.jupiter.api.Assertions.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StepDefinitions {
 
-    private int accountNumber;
-    private double balance;
+    private int checkingAccountBalance;
+    private int depositAmount;
+    private int actualBalance;
+    private int overDraftFee;
+    private int availableBalance;
+    private int withdrawalAmount;
+    private int creditInterest;
 
-    @Given("a user with account number {int}")
-    public void a_user_with_account_number(Integer accountNumber){
-        this.accountNumber=accountNumber;
+    @Given("my checking account has a balance of ${int}")
+    public void myCheckingAccountHasABalanceOf$(int balance) {
+        checkingAccountBalance = balance;
     }
 
-    @When("they check their balance")
-    public void they_check_their_balance(){
-        this.balance=retrieveBalance(accountNumber);
+    @And("I have recently made a deposit of ${int}")
+    public void iHaveRecentlyMadeADepositOf$(int deposit) {
+        depositAmount = deposit;
     }
 
-    @Then("they should see a balance of ${double}")
-    public void they_should_see_a_balance_of_$(Double expectedBalance){
-        assertEquals(expectedBalance, balance);
+    @When("I check my account balance")
+    public void iCheckMyAccountBalance() {
+        actualBalance = checkingAccountBalance + depositAmount - withdrawalAmount;
     }
 
-    private double retrieveBalance(int accountNumber){
-        return 1000;
+    @Then("I should see ${int} as the balance")
+    public void iShouldSee$AsTheBalance(int expectedBalance) {
+        assertEquals(expectedBalance, actualBalance);
     }
 
+    @But("there is an overdraft fee of ${int}")
+    public void thereIsAnOverdraftFeeOf$(int fee) {
+        overDraftFee = fee;
+    }
+
+    @And("the available balance should be ${int}")
+    public void theAvailableBalanceShouldBe$(int expectedAvailableBalance) {
+        availableBalance = checkingAccountBalance + depositAmount - overDraftFee + creditInterest - withdrawalAmount;
+        assertEquals(expectedAvailableBalance, availableBalance);
+    }
+
+    @And("I have recently made a withdrawal of ${int}")
+    public void iHaveRecentlyMadeAWithdrawalOf$(int withdrawal) {
+        withdrawalAmount = withdrawal;
+    }
+
+    @But("there is a credit interest of ${int}")
+    public void thereIsACreditInterestOf$(int interest) {
+        creditInterest = interest;
+    }
 }
