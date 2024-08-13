@@ -1,5 +1,9 @@
 package bank;
 
+import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeStep;
 import io.cucumber.java.en.*;
 import java.io.*;
 
@@ -117,4 +121,37 @@ public class StepDefinitions {
     }
 
 
+    @And("i do nothing")
+    public void iDoNothing() {
+    }
+
+    @Before
+    public void before(){
+        System.out.println("*** Before Scenario");
+    }
+
+    @After
+    public void after(){
+        System.out.println("After Scenario ***");
+    }
+
+    @Before(order = 1)
+    public void before11(){
+        System.out.println("*** Before Scenario");
+    }
+
+    @After(order = 2)
+    public void after22(){
+        System.out.println("After Scenario ***");
+    }
+
+    @BeforeStep
+    public void beforeStep(){
+        System.out.println("*** Before Step Scenario");
+    }
+
+    @AfterStep
+    public void afterStep(){
+        System.out.println("*** Before Step Scenario");
+    }
 }
