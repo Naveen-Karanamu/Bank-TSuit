@@ -1,6 +1,6 @@
-Feature: An example
+Feature: Bank Check Balance
 
-  Scenario: The example
-    Given an example scenario
-    When all step definitions are implemented
-    Then the scenario passes
+  Scenario: Check balance for a valid account
+    Given a user with account number 12345
+    When they check their balance
+    Then they should see a balance of $1000.00
