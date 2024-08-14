@@ -39,19 +39,19 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>io.cucumber</groupId>-->
-<!--            <artifactId>cucumber-junit-platform-engine</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
             <version>7.18.1</version>
             <scope>test</scope>
         </dependency>
 
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.18.1</version>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.platform</groupId>
@@ -64,24 +64,25 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-core -->
+
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-core</artifactId>
             <version>1.2.5</version>
         </dependency>
         <dependency>
-            <groupId>bank</groupId>
-            <artifactId>bank</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>test</scope>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.23.1</version>
         </dependency>
+
     </dependencies>
 
     <build>

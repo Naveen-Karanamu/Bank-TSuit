@@ -124,7 +124,7 @@ public class StepDefinitions {
     @And("i do nothing")
     public void iDoNothing() {
     }
-
+/*
     @Before
     public void before(){
         System.out.println("*** Before Scenario");
@@ -154,4 +154,5 @@ public class StepDefinitions {
     public void afterStep(){
         System.out.println("*** Before Step Scenario");
     }
+    */
 }
