@@ -13,10 +13,13 @@ import java.io.PrintStream;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import static org.junit.Assert.assertEquals;
 
 public class WebStepDefinitions {
 
-    @Before
+    WebDriver driver;
+
+//    @Before
     public void setup() {
         // Set the path to the ChromeDriver executable
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\617404611\\Downloads\\chromedriver-win64\\chromedriver.exe");
@@ -29,8 +32,6 @@ public class WebStepDefinitions {
             }
         }));
     }
-
-    WebDriver driver;
 
     @Given("I open the login page")
     public void iOpenTheLoginPage() {
@@ -51,19 +52,15 @@ public class WebStepDefinitions {
     }
 
     @Then("I should see the {string} message")
-    public void iShouldSeeTheMessage(String successMsg) {
-        String text = driver.findElement(By.tagName("h2")).getText();
-        assert text.equals("Login successful");
+    public void iShouldSeeTheMessage(String expectedMessage) {
+        String actualMessage = driver.findElement(By.tagName("h2")).getText();
+        System.out.println("Expected Message: " + expectedMessage);
+        System.out.println("Actual Message: " + actualMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
 
-    @Then("I should see the Invalid username or password. message")
-    public void seeInvalidLoginMessage(){
-        String text = driver.findElement(By.tagName("h2")).getText();
-        assert  text.equals("Invalid username or password");
-    }
-
-    @After()
-    public  void tearDown() throws InterruptedException{
+//    @After
+    public void tearDown() throws InterruptedException {
         Thread.sleep(5000);
         driver.close();
     }
