@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="0.686" tests="11" skipped="0" failures="0" errors="0">
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Deposit - Example #1.1" time="0.053">
+<system-out><![CDATA[
+Given my checking account has a balance of $500.............................passed
+And I have recently made a deposit of $100..................................passed
+When I check my account balance.............................................passed
+Then I should see $600 as the balance.......................................passed
+But there is an overdraft fee of $50........................................passed
+And the available balance should be $550....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Deposit - Example #1.2" time="0.021">
+<system-out><![CDATA[
+Given my checking account has a balance of $5000............................passed
+And I have recently made a deposit of $1000.................................passed
+When I check my account balance.............................................passed
+Then I should see $6000 as the balance......................................passed
+But there is an overdraft fee of $500.......................................passed
+And the available balance should be $5500...................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Deposit - Example #1.3" time="0.009">
+<system-out><![CDATA[
+Given my checking account has a balance of $500.............................passed
+And I have recently made a deposit of $100..................................passed
+When I check my account balance.............................................passed
+Then I should see $600 as the balance.......................................passed
+But there is an overdraft fee of $50........................................passed
+And the available balance should be $550....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Deposit - Example #1.4" time="0.006">
+<system-out><![CDATA[
+Given my checking account has a balance of $500.............................passed
+And I have recently made a deposit of $100..................................passed
+When I check my account balance.............................................passed
+Then I should see $600 as the balance.......................................passed
+But there is an overdraft fee of $50........................................passed
+And the available balance should be $550....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Deposit - Example #2.1" time="0.01">
+<system-out><![CDATA[
+Given my checking account has a balance of $500.............................passed
+And I have recently made a deposit of $100..................................passed
+When I check my account balance.............................................passed
+Then I should see $600 as the balance.......................................passed
+But there is an overdraft fee of $50........................................passed
+And the available balance should be $550....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Deposit - Example #2.2" time="0.003">
+<system-out><![CDATA[
+Given my checking account has a balance of $5000............................passed
+And I have recently made a deposit of $1000.................................passed
+When I check my account balance.............................................passed
+Then I should see $6000 as the balance......................................passed
+But there is an overdraft fee of $500.......................................passed
+And the available balance should be $5500...................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Deposit - Example #2.3" time="0.007">
+<system-out><![CDATA[
+Given my checking account has a balance of $500.............................passed
+And I have recently made a deposit of $100..................................passed
+When I check my account balance.............................................passed
+Then I should see $600 as the balance.......................................passed
+But there is an overdraft fee of $50........................................passed
+And the available balance should be $550....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Deposit - Example #2.4" time="0.01">
+<system-out><![CDATA[
+Given my checking account has a balance of $500.............................passed
+And I have recently made a deposit of $100..................................passed
+When I check my account balance.............................................passed
+Then I should see $600 as the balance.......................................passed
+But there is an overdraft fee of $50........................................passed
+And the available balance should be $550....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Deposit CSV" time="0.006">
+<system-out><![CDATA[
+Given I have the following account details from CSV file "C:\Users\617404611\OneDrive - BT Plc\Desktop\My Learnings\Gherkin\bank\testData.csv".passed
+]]></system-out>
+</testcase>
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Withdrawal" time="0">
+<system-out><![CDATA[
+Given my checking account has a balance of $500.............................passed
+And I have recently made a withdrawal of $100...............................passed
+When I check my account balance.............................................passed
+Then I should see $400 as the balance.......................................passed
+But there is a credit interest of $50.......................................passed
+And the available balance should be $450....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Bank Check Balance Special" name="Checking Account Balance after Withdrawal In-Sufficient Balance" time="0.005">
+<system-out><![CDATA[
+Given my checking account has a balance of $500.............................passed
+When I request to withdraw $700.............................................passed
+Then I should see an Error..................................................passed
+And the available balance should be $500....................................passed
+]]></system-out>
+</testcase>
+</testsuite>
